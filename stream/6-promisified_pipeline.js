@@ -4,10 +4,13 @@ const { promisify } = require('util');
 
 (async () => {
   try {
-    const input = fs.createReadStream('file.txt');
-    const passThrough = new PassThrough();
-    const output = fs.createWriteStream('out.txt');
+    const sourceFilePath = path.join(__dirname, 'files', 'file.txt');
+    const targetFilePath = path.join(__dirname, 'files', 'out.txt');
 
+    const input = fs.createReadStream('files/file.txt');
+    const output = fs.createWriteStream('files/out.txt');
+
+    const passThrough = new PassThrough();
     passThrough.emit('error', new Error('Fu...'));
 
     console.log('Starting pipeline...');
